@@ -6,7 +6,6 @@ import { FaTimes } from 'react-icons/fa';
 import styles from '../assets/mecanico.module.css'; 
 import { useRouter } from 'next/navigation';
 
-
 interface Servico {
   codigo: string;
   nome: string;
@@ -23,13 +22,16 @@ const MecanicoHome: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const storedServicos = localStorage.getItem('servicosEmAndamento');
-    if (storedServicos) {
-      try {
-        const parsedServicos = JSON.parse(storedServicos);
-        setServicosEmAndamento(parsedServicos);
-      } catch (error) {
-        console.error("Erro ao parsear serviços em andamento:", error);
+    // Verifica se está no lado do cliente antes de acessar o localStorage
+    if (typeof window !== "undefined") {
+      const storedServicos = localStorage.getItem('servicosEmAndamento');
+      if (storedServicos) {
+        try {
+          const parsedServicos = JSON.parse(storedServicos);
+          setServicosEmAndamento(parsedServicos);
+        } catch (error) {
+          console.error("Erro ao parsear serviços em andamento:", error);
+        }
       }
     }
   }, []);
@@ -38,17 +40,19 @@ const MecanicoHome: React.FC = () => {
     const updatedServicos = servicosEmAndamento.filter((servico) => servico.codigo !== codigo);
     const servicoCompleto = servicosEmAndamento.find((servico) => servico.codigo === codigo);
 
-    const storedConcluidos = localStorage.getItem('servicosConcluidos') || '[]';
-    const servicosConcluidos = JSON.parse(storedConcluidos);
-    if (servicoCompleto) {
-      servicosConcluidos.push(servicoCompleto);
+    if (typeof window !== "undefined") {
+      const storedConcluidos = localStorage.getItem('servicosConcluidos') || '[]';
+      const servicosConcluidos = JSON.parse(storedConcluidos);
+      if (servicoCompleto) {
+        servicosConcluidos.push(servicoCompleto);
+      }
+
+      setServicosEmAndamento(updatedServicos);
+      localStorage.setItem('servicosEmAndamento', JSON.stringify(updatedServicos));
+      localStorage.setItem('servicosConcluidos', JSON.stringify(servicosConcluidos));
+
+      router.push('/servicosconcluido');
     }
-
-    setServicosEmAndamento(updatedServicos);
-    localStorage.setItem('servicosEmAndamento', JSON.stringify(updatedServicos));
-    localStorage.setItem('servicosConcluidos', JSON.stringify(servicosConcluidos));
-
-    router.push('/servicosconcluido');
   };
 
   const handleViewDetails = (servico: Servico) => {
