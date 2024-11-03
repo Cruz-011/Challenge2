@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import CabecalhoMec from '../../components/cabecalhomec';
 import { FaTimes } from 'react-icons/fa';
-import styles from '../assets/mecanico.module.css'; 
+import styles from '../assets/mecanico.module.css';
 import { useRouter } from 'next/navigation';
 
 interface Servico {
@@ -22,15 +22,14 @@ const MecanicoHome: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // Verifica se está no lado do cliente antes de acessar o localStorage
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const storedServicos = localStorage.getItem('servicosEmAndamento');
       if (storedServicos) {
         try {
           const parsedServicos = JSON.parse(storedServicos);
           setServicosEmAndamento(parsedServicos);
         } catch (error) {
-          console.error("Erro ao parsear serviços em andamento:", error);
+          console.error('Erro ao parsear serviços em andamento:', error);
         }
       }
     }
@@ -40,9 +39,10 @@ const MecanicoHome: React.FC = () => {
     const updatedServicos = servicosEmAndamento.filter((servico) => servico.codigo !== codigo);
     const servicoCompleto = servicosEmAndamento.find((servico) => servico.codigo === codigo);
 
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const storedConcluidos = localStorage.getItem('servicosConcluidos') || '[]';
       const servicosConcluidos = JSON.parse(storedConcluidos);
+
       if (servicoCompleto) {
         servicosConcluidos.push(servicoCompleto);
       }
@@ -51,6 +51,7 @@ const MecanicoHome: React.FC = () => {
       localStorage.setItem('servicosEmAndamento', JSON.stringify(updatedServicos));
       localStorage.setItem('servicosConcluidos', JSON.stringify(servicosConcluidos));
 
+      // Redirecionamento usando o roteador apenas se estiver no lado do cliente
       router.push('/servicosconcluido');
     }
   };
