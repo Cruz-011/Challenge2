@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'; // Certifique-se de importar do caminho correto
 import styles from '../assets/LoginCadastro.module.css';
