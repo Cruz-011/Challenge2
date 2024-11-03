@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Cabecalho from '../../components/cabecalho'; 
 import Rodape from '../../components/rodape';
 
+
 const MainContainer = styled.div`
   background-color: #1e1e1e;
   min-height: 100vh;
