@@ -198,7 +198,7 @@ const Pendentes = () => {
   ]);
   const [selectedPendente, setSelectedPendente] = useState<any | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const router = useRouter(); // Corrigido aqui
+  const router = useRouter; 
 
   useEffect(() => {
     const storedPendentes = localStorage.getItem('pendentes');
@@ -232,7 +232,7 @@ const Pendentes = () => {
       localStorage.setItem('servicosEmAndamento', JSON.stringify(ongoingServices));
     }
 
-    router.push('/Mecanico'); // Navega para a página de serviços em andamento
+    router.push('/Mecanico'); 
   };
 
   const handleReject = (codigo: string) => {
