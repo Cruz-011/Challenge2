@@ -1,0 +1,93 @@
+/* Estilos principais */
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .contentContainer {
+    margin: auto;
+  }
+  
+  .title {
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .servicesList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .serviceItem {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .serviceDetails {
+    margin-bottom: 10px;
+  }
+  
+  .viewDetailsButton,
+  .completeButton {
+    padding: 10px 20px;
+    background-color: #00c6ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .detailsContainer {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 5px;
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; 
+    color: black;
+  }
+  
+  .closeButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: red;
+  }
+  
+  .detailItem {
+    margin: 10px 0;
+  }
+  
+  /* Media Queries para telas menores */
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .title {
+      font-size: 24px;
+    }
+  
+    .viewDetailsButton,
+    .completeButton {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .serviceItem {
+      padding: 8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .title {
+      font-size: 20px;
+    }
+  }
+  
