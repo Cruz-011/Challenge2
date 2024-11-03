@@ -1,8 +1,6 @@
-'use client';
-
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import styles from '../assets/LoginCadastro.module.css'; 
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation'; // Certifique-se de importar do caminho correto
+import styles from '../assets/LoginCadastro.module.css';
 
 const LoginCadastro: React.FC = () => {
   const [isRegistering, setIsRegistering] = useState(false);
@@ -10,7 +8,7 @@ const LoginCadastro: React.FC = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const router = useRouter(); // Correção aqui: adicione os parênteses
+  const router = useRouter();
 
   const saveUser = (username: string, email: string, password: string) => {
     const userData = { username, email, password };
@@ -41,7 +39,7 @@ const LoginCadastro: React.FC = () => {
     } else {
       if (verifyLogin(email, password)) {
         alert('Login realizado com sucesso!');
-        router.push('/'); // Agora deve funcionar
+        router.push('/'); // Redireciona após login
       } else {
         alert('E-mail ou senha inválidos');
       }
@@ -71,7 +69,6 @@ const LoginCadastro: React.FC = () => {
                 />
               </div>
             )}
-
             <div className={styles.formGroup}>
               <label htmlFor="email">E-mail</label>
               <input
@@ -83,7 +80,6 @@ const LoginCadastro: React.FC = () => {
                 required
               />
             </div>
-
             <div className={styles.formGroup}>
               <label htmlFor="password">Senha</label>
               <input
@@ -95,7 +91,6 @@ const LoginCadastro: React.FC = () => {
                 required
               />
             </div>
-
             {isRegistering && (
               <div className={styles.formGroup}>
                 <label htmlFor="confirmPassword">Confirme a Senha</label>
@@ -109,12 +104,10 @@ const LoginCadastro: React.FC = () => {
                 />
               </div>
             )}
-
             <button type="submit" className={styles.buttonLogin}>
               {isRegistering ? 'Registrar' : 'Entrar'}
             </button>
           </form>
-
           <p className={styles.toggleText}>
             {isRegistering ? (
               <>
@@ -136,6 +129,6 @@ const LoginCadastro: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default LoginCadastro;
