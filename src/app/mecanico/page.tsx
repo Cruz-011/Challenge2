@@ -51,7 +51,6 @@ const MecanicoHome: React.FC = () => {
       localStorage.setItem('servicosEmAndamento', JSON.stringify(updatedServicos));
       localStorage.setItem('servicosConcluidos', JSON.stringify(servicosConcluidos));
 
-      // Redirecionamento usando o roteador apenas se estiver no lado do cliente
       router.push('/servicosconcluido');
     }
   };

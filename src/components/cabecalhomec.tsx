@@ -183,7 +183,7 @@ const DropdownItem = styled.button`
 const CabecalhoMec: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [userName, setUserName] = useState<string>('Usuário');
-  const router = useRouter();
+  const router = useRouter;
   const configRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => {
@@ -197,11 +197,7 @@ const CabecalhoMec: React.FC = () => {
     }
   };
 
-  const handleLogout = () => {
-    router.push('/login');
-  };
 
-  // Fechar o dropdown ao clicar fora
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (configRef.current && !configRef.current.contains(event.target as Node)) {
@@ -257,7 +253,6 @@ const CabecalhoMec: React.FC = () => {
                 Olá, {userName}
               </span>
               <DropdownItem onClick={handleChangeName}>Mudar Nome</DropdownItem>
-              <DropdownItem onClick={handleLogout}>Sair</DropdownItem>
             </DropdownMenu>
           )}
         </ConfigContainer>
