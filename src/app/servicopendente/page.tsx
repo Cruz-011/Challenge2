@@ -198,7 +198,7 @@ const Pendentes = () => {
   ]);
   const [selectedPendente, setSelectedPendente] = useState<any | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const router = useRouter;
+  const router = useRouter(); // Corrigido aqui
 
   useEffect(() => {
     const storedPendentes = localStorage.getItem('pendentes');
@@ -295,25 +295,25 @@ const Pendentes = () => {
             </StyledTable>
           </TableContainer>
         )}
-
-        {selectedPendente && (
-          <DetailsContainer>
-            <CloseButton onClick={handleCloseDetails}>×</CloseButton>
-            <DetailItem>Código: {selectedPendente.codigo}</DetailItem>
-            <DetailItem>Data: {selectedPendente.data}</DetailItem>
-            <DetailItem>Hora: {selectedPendente.hora}</DetailItem>
-            <DetailItem>Veículo: {selectedPendente.veiculo}</DetailItem>
-            <DetailItem>Nome: {selectedPendente.nome}</DetailItem>
-            <DetailItem>Mecânica: {selectedPendente.mecanica}</DetailItem>
-            <DetailItem>Endereço da Mecânica: {selectedPendente.enderecoMecanica}</DetailItem>
-            <DetailItem>Laudo: {selectedPendente.laudo}</DetailItem>
-            <ActionButtons>
-              <AcceptButton onClick={() => handleAccept(selectedPendente.codigo)}>Aceitar</AcceptButton>
-              <RejectButton onClick={() => handleReject(selectedPendente.codigo)}>Rejeitar</RejectButton>
-            </ActionButtons>
-          </DetailsContainer>
-        )}
       </ContentContainer>
+
+      {selectedPendente && (
+        <DetailsContainer>
+          <CloseButton onClick={handleCloseDetails}>×</CloseButton>
+          <DetailItem><strong>Código:</strong> {selectedPendente.codigo}</DetailItem>
+          <DetailItem><strong>Data:</strong> {selectedPendente.data}</DetailItem>
+          <DetailItem><strong>Hora:</strong> {selectedPendente.hora}</DetailItem>
+          <DetailItem><strong>Veículo:</strong> {selectedPendente.veiculo}</DetailItem>
+          <DetailItem><strong>Nome do Serviço:</strong> {selectedPendente.nome}</DetailItem>
+          <DetailItem><strong>Mecânica:</strong> {selectedPendente.mecanica}</DetailItem>
+          <DetailItem><strong>Endereço da Mecânica:</strong> {selectedPendente.enderecoMecanica}</DetailItem>
+          <DetailItem><strong>Laudo:</strong> {selectedPendente.laudo}</DetailItem>
+          <div>
+            <AcceptButton onClick={() => handleAccept(selectedPendente.codigo)}>Aceitar</AcceptButton>
+            <RejectButton onClick={() => handleReject(selectedPendente.codigo)}>Recusar</RejectButton>
+          </div>
+        </DetailsContainer>
+      )}
     </MainContainer>
   );
 };
