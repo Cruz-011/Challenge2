@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Cabecalho from '../../components/cabecalho';
+import Cabecalho from '../../components/cabecalho'; 
+import Rodape from '../../components/rodape';
 
 const MainContainer = styled.div`
   background-color: #1e1e1e;
@@ -317,13 +318,13 @@ const AgendarServico: React.FC = () => {
                   required
                 />
               </FormField>
-              <SubmitButton type="submit">Agendar</SubmitButton>
+              <SubmitButton type="submit">Confirmar Agendamento</SubmitButton>
               <CloseButton type="button" onClick={handleCloseModal}>Fechar</CloseButton>
             </form>
           </FormContainer>
         </Modal>
       )}
-
+      <Rodape />
     </MainContainer>
   );
 };
