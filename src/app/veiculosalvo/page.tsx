@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../assets/VeiculosSalvos.module.css';
 import Cabecalho from '../../components/cabecalho';
-import Chat from '../../components/chat';
 
 interface Vehicle {
   marca: string;
@@ -46,11 +45,7 @@ const VeiculosSalvos: React.FC = () => {
     }
   };
 
-  const handleHelp = (vehicle: Vehicle) => {
-    const message = `Preciso de ajuda para o veículo ${vehicle.marca} ${vehicle.modelo}. Qual é o problema?`;
-    setChatMessage(message);
-    setShowChat(true);
-  };
+
 
   const handleCloseChat = () => {
     setShowChat(false);
@@ -83,7 +78,6 @@ const VeiculosSalvos: React.FC = () => {
                   <p><strong>Chassis:</strong> {vehicle.chassis}</p>
                 </div>
                 <div className={styles.cardActions}>
-                  <button className={styles.btnAjuda} onClick={() => handleHelp(vehicle)}>Ajuda</button>
                   <button className={styles.btnEditar} onClick={() => handleEdit(index)}>Editar</button>
                   <button className={styles.btnExcluir} onClick={() => handleDelete(index)}>Excluir</button>
                 </div>
@@ -139,10 +133,6 @@ const VeiculosSalvos: React.FC = () => {
             </div>
           </div>
         </div>
-      )}
-
-      {showChat && (
-        <Chat onClose={handleCloseChat} message={chatMessage} />
       )}
     </div>
   );

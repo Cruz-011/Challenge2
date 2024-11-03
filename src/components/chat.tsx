@@ -18,7 +18,7 @@ const Chat: React.FC<ChatProps> = ({ onClose }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const router = useRouter(); // Aqui deve funcionar corretamente
+  const router = useRouter();
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
