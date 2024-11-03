@@ -1,4 +1,3 @@
-// pages/novo-veiculo.tsx
 'use client';
 import React, { useState } from 'react';
 import Cabecalho from '../../components/cabecalho';
@@ -14,6 +13,17 @@ interface VehicleData {
   chassis: string;
 }
 
+const isValidVehicleData = (data: any): data is VehicleData => {
+  return (
+    typeof data.marca === 'string' &&
+    typeof data.modelo === 'string' &&
+    typeof data.ano === 'string' &&
+    typeof data.combustivel === 'string' &&
+    typeof data.placa === 'string' &&
+    typeof data.chassis === 'string'
+  );
+};
+
 const NovoVeiculo: React.FC = () => {
   const [veiculoSalvo, setVeiculoSalvo] = useState(false);
 
@@ -21,14 +31,19 @@ const NovoVeiculo: React.FC = () => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const vehicleData = Object.fromEntries(formData.entries()) as VehicleData;
+    const vehicleData = Object.fromEntries(formData.entries()) as unknown;
 
-    // Salva os dados do veículo no localStorage
-    const vehicles = JSON.parse(localStorage.getItem('vehicles') || '[]');
-    vehicles.push(vehicleData);
-    localStorage.setItem('vehicles', JSON.stringify(vehicles));
+    // Valida os dados do veículo
+    if (isValidVehicleData(vehicleData)) {
+      // Salva os dados do veículo no localStorage
+      const vehicles = JSON.parse(localStorage.getItem('vehicles') || '[]');
+      vehicles.push(vehicleData);
+      localStorage.setItem('vehicles', JSON.stringify(vehicles));
 
-    setVeiculoSalvo(true);
+      setVeiculoSalvo(true);
+    } else {
+      console.error('Dados do veículo inválidos:', vehicleData);
+    }
   };
 
   return (
@@ -83,7 +98,7 @@ const NovoVeiculo: React.FC = () => {
           </form>
         )}
       </div>
-      <Rodape/>
+      <Rodape />
     </div>
   );
 };
