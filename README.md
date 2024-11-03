@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+CarCheck - Sistema de Gestão para Serviços Mecânicos
+Descrição
+CarCheck é uma aplicação desenvolvida com Next.js e TypeScript para gerenciar serviços de mecânica automotiva. O sistema permite ao usuário visualizar e gerenciar serviços em andamento, registrar detalhes do veículo, histórico de serviços e status de cada atividade. Com foco em usabilidade e suporte multiplataforma, o CarCheck oferece uma interface intuitiva e moderna para mecânicos e administradores de oficinas.
 
-## Getting Started
+Funcionalidades
+Gestão de Serviços em Andamento: Visualização e gerenciamento de serviços em andamento, com possibilidade de concluir ou adicionar novos serviços.
+Visualização de Detalhes: Cada serviço permite o acesso a detalhes como código do serviço, data, hora, veículo e laudo.
+Histórico de Serviços: Os serviços concluídos são movidos para o histórico e salvos no localStorage para consulta futura.
+Sistema de Redirecionamento: A navegação entre as páginas de serviços em andamento e concluídos é feita de forma dinâmica com uso de roteamento Next.js.
+Suporte Multiplataforma: Otimizado para desktops e dispositivos móveis.
+Tecnologias Utilizadas
+Next.js: Framework React para renderização do lado do cliente e servidor, proporcionando uma aplicação rápida e otimizada.
+React: Biblioteca JavaScript para construção de interfaces de usuário dinâmicas.
+TypeScript: Suporte a tipagem estática para maior segurança e consistência no código.
+CSS Modules: Modularização de estilos CSS para garantir um encapsulamento dos componentes.
+React Icons: Biblioteca de ícones para facilitar o design e usabilidade da aplicação.
+Estrutura do Projeto
+components/: Componentes reutilizáveis, como o cabeçalho.
+assets/: Arquivos de estilos (CSS) e imagens.
+pages/: Páginas principais do projeto, como /mecanico e /servicosconcluido.
+public/: Arquivos públicos, como ícones e logos.
+Instalação
+Para instalar o projeto localmente:
 
-First, run the development server:
-
-```bash
+Clone o repositório:
+bash
+Copiar código
+git clone https://github.com/seu-usuario/CarCheck.git
+Navegue até o diretório do projeto:
+bash
+Copiar código
+cd CarCheck
+Instale as dependências:
+bash
+Copiar código
+npm install
+Uso
+Inicie o servidor de desenvolvimento:
+bash
+Copiar código
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Abra http://localhost:3000 no navegador para ver a aplicação.
+Scripts Disponíveis
+npm run dev: Inicia o servidor de desenvolvimento.
+npm run build: Compila o projeto para produção.
+npm run start: Inicia o servidor com o build de produção.
+npm run lint: Executa o linter para verificar problemas no código.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Próximas Funcionalidades
+Sistema de Recompensas por Fidelidade: Oferecer descontos e benefícios para clientes frequentes.
+Notificações em Tempo Real: Acompanhamento em tempo real dos serviços para mecânicos e clientes.
+Integração com Plataforma de Pagamentos: Opção para pagamento e faturamento dos serviços diretamente no sistema.
+Contribuição
+Para contribuir com este projeto:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Crie um fork do repositório.
+Crie uma nova branch:
+bash
+Copiar código
+git checkout -b sua-branch
+Faça as alterações e faça o commit:
+bash
+Copiar código
+git commit -m "Descrição das alterações"
+Envie para o repositório original:
+bash
+Copiar código
+git push origin sua-branch
+Abra um Pull Request.
