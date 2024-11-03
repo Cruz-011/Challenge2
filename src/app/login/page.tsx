@@ -10,7 +10,7 @@ const LoginCadastro: React.FC = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const router = useRouter; 
+  const router = useRouter(); // Correção aqui: adicione os parênteses
 
   const saveUser = (username: string, email: string, password: string) => {
     const userData = { username, email, password };
@@ -41,7 +41,7 @@ const LoginCadastro: React.FC = () => {
     } else {
       if (verifyLogin(email, password)) {
         alert('Login realizado com sucesso!');
-        router.push('/'); 
+        router.push('/'); // Agora deve funcionar
       } else {
         alert('E-mail ou senha inválidos');
       }
